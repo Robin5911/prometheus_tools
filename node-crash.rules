@@ -1,0 +1,8 @@
+ - alert: '主机宕机'
+    #expr: up == 0
+    expr: (changes(node_time_seconds[2m]) == 0 ) or (absent(node_time_seconds))
+    for: 2m
+    labels:
+      severity: "L2" 
+    annotations:
+      description: '{{$labels.instance}} 服务器发生宕机'
