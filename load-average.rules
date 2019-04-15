@@ -1,0 +1,7 @@
+ - alert: '主机负载过高'
+    expr: (node_load5 / count without (cpu, mode) (node_cpu_seconds_total{mode="system"}))  > 8
+    for: 3m
+    labels:
+      severity: "L3" 
+    annotations:
+      description: '{{$labels.instance}} 服务器负载过高'
