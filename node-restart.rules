@@ -1,6 +1,0 @@
-- alert: '节点发生重启'
-    expr: changes(node_boot_time_seconds[2m]) > 0
-    labels:
-      severity: "L3" 
-    annotations:
-      description: '{{$labels.instance}} 刚刚发生重启'
