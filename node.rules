@@ -1,0 +1,22 @@
+- alert: 'node reboots too offen'
+    expr: changes(node_boot_time_seconds[1d]) > 2
+    labels:
+      severity: "L3" 
+    annotations:
+      description: '{{$labels.instance}} reboot too offen in one day.'
+
+- alert: 'node load too high'
+    expr: (node_load5 / count without (cpu, mode) (node_cpu_seconds_total{mode="system"}))  > 2
+    for: 3m
+    labels:
+      severity: "L3"
+    annotations:
+      description: '{{$labels.instance}} load is too high.'
+
+- alert: 'node filesystem useage high'
+    expr: (node_filesystem_free_bytes / node_filesystem_size_bytes) * 100 < 10
+    for: 5m
+    labels:
+      severity: "L3"
+    annotations:
+      description: '{{ $labels.instance }} partition {{ $lables.mountpoint }} remaining space has less than 10%'
