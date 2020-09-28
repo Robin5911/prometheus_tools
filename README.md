@@ -1,5 +1,5 @@
-# prometheus_rules
+# prometheus_tools
 
-`node exporter` `openstack exporter`
+`prometheus 2.0` `grafana`
 
-#### collection of Prometheus rules I use in Production environment
+#### 基于prometheus 2.0, 收集常用prometheus alert rules和grafana 的模板json
